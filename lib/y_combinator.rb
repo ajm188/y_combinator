@@ -10,7 +10,7 @@ module YCombinator
   # itself as an argument and then refer to itself
   # in its definition. This creates the recursion.
   def self.y_combinator
-    ->(f) {
+    @y ||= ->(f) {
       ->(x) { f.(->(v) { x.(x).(v) }) }.(
       ->(x) { f.(->(v) { x.(x).(v) }) } )
     }
